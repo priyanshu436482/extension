@@ -48,6 +48,7 @@ app.post("/api/summarize", async (req, res) => {
     console.error("Summarization error:", error.stack || error);
     res.status(500).json({
       error: error.message || "Failed to generate summary. Please check your API key and try again.",
+      stack: error.stack || String(error)
     });
   }
 });
