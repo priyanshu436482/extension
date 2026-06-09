@@ -185,7 +185,14 @@ async function fetchSummary(text) {
   const provider = settings.provider || "gemini";
   const model = settings.model || "";
   const apiKey = settings.apiKey || "";
-  const apiUrl = settings.apiUrl || DEFAULT_API_URL;
+  
+  let apiUrl = settings.apiUrl || DEFAULT_API_URL;
+  if (apiUrl) {
+    apiUrl = apiUrl.trim().replace(/\/$/, ""); // Remove trailing slash
+    if (!apiUrl.endsWith("/api/summarize")) {
+      apiUrl = `${apiUrl}/api/summarize`;
+    }
+  }
 
   try {
     const response = await fetch(apiUrl, {
