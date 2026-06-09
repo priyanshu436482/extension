@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Webpage Summarizer</title>
+  <!-- Google Fonts Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <div class="header-main">
+        <h1>AI Summarizer</h1>
+        <button id="settingsToggleBtn" class="btn-settings-toggle" title="AI Settings">
+          <span>⚙️</span>
+        </button>
+      </div>
+      <p class="subtitle">Summarize any webpage instantly</p>
+    </header>
+
+    <main class="main">
+      <!-- Settings Panel Drawer -->
+      <div id="settingsPanel" class="settings-panel hidden">
+        <div class="settings-header">
+          <h3>Configuration</h3>
+        </div>
+        <div class="form-group">
+          <label for="providerSelect">AI Provider</label>
+          <select id="providerSelect">
+            <option value="gemini" selected>Google Gemini</option>
+            <option value="openrouter">OpenRouter (Active Key)</option>
+            <option value="openai">OpenAI</option>
+            <option value="groq">Groq</option>
+            <option value="freellmapi">FreeLLMAPI (Local proxy)</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="modelInput">Model (Optional Override)</label>
+          <input type="text" id="modelInput" placeholder="Using default model if empty">
+        </div>
+        <div class="form-group">
+          <label for="apiKeyInput">API Key (Optional Override)</label>
+          <div class="password-input-container">
+            <input type="password" id="apiKeyInput" placeholder="Using backend .env key if empty">
+            <button id="togglePasswordBtn" class="btn-toggle-password" type="button" title="Toggle visibility">👁️</button>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="apiUrlInput">API Server URL</label>
+          <input type="text" id="apiUrlInput" placeholder="http://localhost:3010/api/summarize">
+        </div>
+        <button id="saveSettingsBtn" class="btn-save-settings">Save Config</button>
+        <div id="settingsStatus" class="settings-status hidden">✓ Settings saved successfully!</div>
+      </div>
+
+      <!-- Summarize Button -->
+      <button id="summarizeBtn" class="btn-primary">
+        <span class="btn-icon">✨</span>
+        Summarize Page
+      </button>
+
+      <!-- Loading State -->
+      <div id="loading" class="loading hidden">
+        <div class="spinner-container">
+          <div class="spinner"></div>
+          <div class="spinner-glow"></div>
+        </div>
+        <p>Synthesizing insights...</p>
+      </div>
+
+      <!-- Error State -->
+      <div id="error" class="error hidden">
+        <span class="error-icon">⚠️</span>
+        <p id="errorMessage">Something went wrong.</p>
+      </div>
+
+      <!-- Summary Result -->
+      <div id="result" class="result hidden">
+        <div class="result-header">
+          <h2>Insights Summary</h2>
+          <button id="copyBtn" class="btn-icon-only" title="Copy summary">
+            <span>📋</span>
+          </button>
+        </div>
+        <div id="summaryContent" class="summary-content"></div>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <p>Elevated AI Webpage Summarizer</p>
+    </footer>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

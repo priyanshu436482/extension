@@ -1,0 +1,9 @@
+backend/node_modules/
+backend/.env
+backend/server_out.txt
+backend/server_out2.txt
+backend/server_err.txt
+backend/server_err2.txt
+.DS_Store
+.idea/
+.vscode/

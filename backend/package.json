@@ -1,0 +1,26 @@
+{
+  "name": "ai-webpage-summarizer-backend",
+  "version": "1.0.0",
+  "description": "Backend server for AI Webpage Summarizer Chrome Extension",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "keywords": [
+    "chrome-extension",
+    "summarizer",
+    "ai",
+    "openai",
+    "gemini"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "@google/generative-ai": "^0.21.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.0",
+    "groq-sdk": "^1.2.0",
+    "openai": "^4.67.0"
+  }
+}
