@@ -97,7 +97,7 @@ async function summarizeWithGemini(text, customModel, customApiKey) {
   }
   const genAI = new GoogleGenerativeAI(apiKey);
   const model = genAI.getGenerativeModel({
-    model: customModel || process.env.GEMINI_MODEL || "gemini-2.0-flash",
+    model: customModel || process.env.GEMINI_MODEL || "gemini-flash-lite-latest",
   });
 
   const prompt = `Summarize the following webpage text. Include:
